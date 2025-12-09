@@ -79,7 +79,7 @@ function App() {
       // FILE OR FILE + URL submission
       if (file) {
         const formData = new FormData();
-        formData.append("files", file); // IMPORTANT: must be "files"
+        formData.append("file", file); // IMPORTANT: must be "files"
         if (notes.trim()) formData.append("notes", notes.trim());
         if (url.trim()) formData.append("url", url.trim());
 
