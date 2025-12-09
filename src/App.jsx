@@ -34,6 +34,7 @@ function App() {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/api/submissions/${trimmed}`);
+
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data.message || "Invalid or expired code.");
@@ -75,22 +76,24 @@ function App() {
     try {
       let res;
 
+      // FILE OR FILE + URL submission
       if (file) {
-        // Upload file to B2 via /:code/upload
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("files", file); // IMPORTANT: must be "files"
         if (notes.trim()) formData.append("notes", notes.trim());
         if (url.trim()) formData.append("url", url.trim());
 
         res = await fetch(
-          `${API_BASE}/api/submissions/${session.code}/upload`,
+          `${API_BASE}/api/submissions/${session.code}/submit`,
           {
             method: "POST",
             body: formData,
           }
         );
-      } else {
-        // URL-only submission via /:code/submit (existing route)
+      }
+
+      // URL-ONLY submission
+      else {
         res = await fetch(
           `${API_BASE}/api/submissions/${session.code}/submit`,
           {
@@ -114,6 +117,7 @@ function App() {
       setSuccessMessage(
         data.message || "Submission received. Your client will review it soon."
       );
+
       setStep("done");
     } catch (err) {
       console.error("Submit error:", err);
@@ -148,6 +152,7 @@ function App() {
         </header>
 
         <main className="card">
+          {/* STEP 1 — ENTER CODE */}
           {step === "code" && (
             <>
               <h2 className="card-title">Enter Submission Code</h2>
@@ -173,17 +178,14 @@ function App() {
 
                 {error && <div className="error-banner">{error}</div>}
 
-                <button
-                  type="submit"
-                  className="primary-btn"
-                  disabled={loading}
-                >
+                <button type="submit" className="primary-btn" disabled={loading}>
                   {loading ? "Checking..." : "Continue"}
                 </button>
               </form>
             </>
           )}
 
+          {/* STEP 2 — SUBMIT WORK */}
           {step === "submit" && session && (
             <>
               <h2 className="card-title">Submit Work</h2>
@@ -200,15 +202,13 @@ function App() {
                   <ul>
                     <li>
                       <span className="accent">Option 1:</span> Upload a file
-                      (designs, zips, docs, etc.).
+                      (zip, images, docs, etc.).
                     </li>
                     <li>
-                      <span className="accent">Option 2:</span> Paste a URL to
-                      your work (GitHub repo, Figma file, live link, etc.).
+                      <span className="accent">Option 2:</span> Submit a link to
+                      your work (GitHub, Figma, website, etc.).
                     </li>
-                    <li>
-                      You can also do both: upload a file and include a link.
-                    </li>
+                    <li>You can also do both.</li>
                   </ul>
                 </div>
 
@@ -226,7 +226,7 @@ function App() {
                   <input
                     className="input"
                     type="url"
-                    placeholder="https://github.com/your-repo-or-figma-link"
+                    placeholder="https://link-to-your-work"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                   />
@@ -237,7 +237,7 @@ function App() {
                   <textarea
                     className="textarea"
                     rows={4}
-                    placeholder="Explain what you delivered, how to test it, or anything important they should know."
+                    placeholder="Explain what you delivered or any instructions."
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                   />
@@ -245,11 +245,7 @@ function App() {
 
                 {error && <div className="error-banner">{error}</div>}
 
-                <button
-                  type="submit"
-                  className="primary-btn"
-                  disabled={submitting}
-                >
+                <button type="submit" className="primary-btn" disabled={submitting}>
                   {submitting ? "Submitting..." : "Submit Work"}
                 </button>
 
@@ -259,26 +255,26 @@ function App() {
                   onClick={handleReset}
                   disabled={submitting}
                 >
-                  Start over
+                  Start Over
                 </button>
               </form>
             </>
           )}
 
+          {/* STEP 3 — DONE */}
           {step === "done" && (
             <div className="success-state">
               <h2 className="card-title">Submission Complete</h2>
               {successMessage && (
                 <p className="card-subtitle">{successMessage}</p>
               )}
+
               <p className="success-detail">
                 Your client will review your submission inside NativeBridge.
-                You can continue messaging them in the app if they request
-                changes.
               </p>
 
               <button className="primary-btn" onClick={handleReset}>
-                Submit more work
+                Submit More Work
               </button>
             </div>
           )}
