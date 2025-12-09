@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/nativebridge-desktop/", // <-- REQUIRED for GitHub Pages
+  base: "/nativebridge-desktop/", 
 });
