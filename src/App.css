@@ -18,7 +18,8 @@
 .app-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, #00bfff33, transparent 60%),
+  background:
+    radial-gradient(circle at top left, #00bfff33, transparent 60%),
     radial-gradient(circle at bottom right, #00ffaa33, transparent 60%);
   opacity: 0.9;
   z-index: 0;
@@ -80,7 +81,8 @@
 
   padding: 24px 22px 26px;
 
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7),
+  box-shadow:
+    0 0 25px rgba(0, 0, 0, 0.7),
     0 0 30px rgba(0, 255, 170, 0.06);
 }
 
@@ -171,7 +173,7 @@
   border: 1px solid #222;
   background: radial-gradient(circle at top left, #00bfff0f, #000);
 
-  padding: 12px 12px 12px 12px;
+  padding: 12px;
   font-size: 13px;
   color: #bbb;
 }

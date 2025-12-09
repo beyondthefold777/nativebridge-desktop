@@ -1,34 +1,34 @@
-/* RESET + GLOBAL LAYOUT */
-* {
+/* GLOBAL RESET & LAYOUT */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
-  background-color: #000;
-  color: #fff;
+}
+
+/* BASIC BODY STYLING */
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
     Avenir, Helvetica, Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
 }
 
-/* Center content if App wants it */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Links (just in case) */
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Remove blue highlighting on buttons/inputs (optional) */
-button, input, textarea {
-  outline: none;
-  border: none;
-  font-family: inherit;
-}
-
-/* Scrollbar styling */
+/* Scrollbar styling (optional) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -38,4 +38,11 @@ button, input, textarea {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
+}
+
+/* Inputs/buttons inherit font */
+button,
+input,
+textarea {
+  font-family: inherit;
 }
