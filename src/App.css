@@ -1,42 +1,319 @@
+:root {
+  --bg: #000000;
+  --card-bg: #111111;
+  --border-subtle: #222222;
+  --accent-blue: #00bfff;
+  --accent-blue-soft: #0077ff;
+  --accent-teal: #00ffaa;
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --danger: #ff4b6a;
+  --radius-xl: 18px;
+  --radius-full: 999px;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.85);
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Roboto", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-main);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: radial-gradient(circle at top, #003366 0%, #000000 55%);
+  color: var(--text-main);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at top left,
+      rgba(0, 191, 255, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(0, 255, 170, 0.18),
+      transparent 60%
+    );
+  opacity: 0.9;
+  pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.app-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
+/* HEADER */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 191, 255, 0.35);
+  backdrop-filter: blur(20px);
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-blue), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #000;
+  box-shadow: 0 0 18px rgba(0, 191, 255, 0.5);
+}
+
+.header-text h1 {
+  font-size: 18px;
+  margin: 0 0 2px;
+  letter-spacing: 0.03em;
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* CARD */
 
 .card {
-  padding: 2em;
+  background: radial-gradient(circle at top, #181818, #050505 70%);
+  border-radius: 24px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  padding: 24px 22px 26px;
 }
 
-.read-the-docs {
-  color: #888;
+.card-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.card-subtitle.small {
+  font-size: 13px;
+}
+
+.accent {
+  color: var(--accent-teal);
+  font-weight: 600;
+}
+
+.mono {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  letter-spacing: 0.18em;
+}
+
+/* FORMS */
+
+.form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--text-muted);
+  gap: 6px;
+}
+
+.input,
+.textarea,
+.file-input {
+  background: #070707;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 1px rgba(0, 191, 255, 0.3);
+  background: #0b0b0b;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #555;
+}
+
+.file-input {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+/* BUTTONS */
+
+.primary-btn,
+.ghost-btn {
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, opacity 0.15s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    var(--accent-blue),
+    var(--accent-blue-soft)
+  );
+  color: #000;
+  box-shadow: 0 12px 25px rgba(0, 191, 255, 0.35);
+}
+
+.primary-btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+  box-shadow: none;
+}
+
+.primary-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0, 191, 255, 0.4);
+}
+
+.primary-btn:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(0, 191, 255, 0.35);
+}
+
+.ghost-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  margin-top: 4px;
+}
+
+.ghost-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* INFO + ERROR + SUCCESS */
+
+.info-box {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.info-box ul {
+  padding-left: 18px;
+  margin: 6px 0 0;
+}
+
+.info-box li {
+  margin-bottom: 4px;
+}
+
+.error-banner {
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 75, 106, 0.12);
+  border: 1px solid rgba(255, 75, 106, 0.5);
+  font-size: 13px;
+  color: #ffcfd7;
+}
+
+.success-state {
+  text-align: left;
+}
+
+.success-detail {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 12px 0 18px;
+}
+
+/* FOOTER */
+
+.footer {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 4px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 640px) {
+  .app-shell {
+    margin: 16px 10px;
+  }
+
+  .card {
+    padding: 18px 16px 20px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .header-text h1 {
+    font-size: 16px;
+  }
 }
