@@ -12,7 +12,7 @@ export default function ReviewPortal() {
   const [error, setError] = useState("");
 
   /* ============================================================
-     FETCH JOB + SUBMISSIONS
+     FETCH JOB + SUBMISSIONS (PUBLIC REVIEW ROUTE)
   ============================================================ */
   useEffect(() => {
     if (!jobId) {
@@ -23,7 +23,7 @@ export default function ReviewPortal() {
 
     const fetchJob = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/jobs/job/${jobId}`);
+        const res = await fetch(`${API_BASE}/api/review/${jobId}`);
 
         if (!res.ok) {
           throw new Error("Job not found or unavailable.");
