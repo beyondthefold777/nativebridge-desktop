@@ -23,7 +23,9 @@ export default function ReviewPortal() {
 
     const fetchJob = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/review/${jobId}`);
+        const res = await fetch(
+          `${API_BASE}/api/review/${jobId}` // ✅ FIXED ROUTE
+        );
 
         if (!res.ok) {
           throw new Error("Job not found or unavailable.");
@@ -99,11 +101,6 @@ export default function ReviewPortal() {
                 Status: <span className="accent">{job.status}</span>
               </p>
 
-              <div className="info-box">
-                <strong>Description</strong>
-                <p>{job.description}</p>
-              </div>
-
               <h3 className="section-title">Submissions</h3>
 
               {!job.submissions?.length && (
@@ -124,20 +121,15 @@ export default function ReviewPortal() {
                     </div>
                   )}
 
-                  {sub.files?.length > 0 && (
-                    <>
-                      <strong>Files</strong>
-                      {sub.files.map((file, i) => (
-                        <button
-                          key={i}
-                          className="file-btn"
-                          onClick={() => handleDownload(file)}
-                        >
-                          📄 {file.name}
-                        </button>
-                      ))}
-                    </>
-                  )}
+                  {sub.files?.map((file, i) => (
+                    <button
+                      key={i}
+                      className="file-btn"
+                      onClick={() => handleDownload(file)}
+                    >
+                      📄 {file.name}
+                    </button>
+                  ))}
                 </div>
               ))}
             </>
