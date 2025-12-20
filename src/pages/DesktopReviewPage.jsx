@@ -57,7 +57,8 @@ export default function ReviewPortal() {
       const encodedKey = encodeURIComponent(file.key);
 
       const res = await fetch(
-        `${API_BASE}/api/submissions/download/${job._id}/${encodedKey}`
+        `${API_BASE}/api/review/download/${job._id}/${encodedKey}`
+
       );
 
       if (!res.ok) {
