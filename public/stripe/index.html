@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NativeBridge – Marketplace for Tech Work</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="NativeBridge is a marketplace platform connecting clients with independent tech professionals for on-demand digital work."
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #ccc;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: linear-gradient(90deg, #00bfff, #0077ff);
+        color: #000;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+
+      .box {
+        background-color: #111;
+        border: 1px solid #222;
+        border-radius: 14px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      footer {
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #222;
+        color: #777;
+        font-size: 14px;
+      }
+
+      a {
+        color: #00bfff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <span class="badge">Official Business Page</span>
+
+      <h1>NativeBridge</h1>
+
+      <p>
+        NativeBridge is a marketplace platform that connects clients with
+        independent tech professionals for short-term and on-demand digital
+        work.
+      </p>
+
+      <div class="box">
+        <h2>What We Do</h2>
+        <p>
+          Clients post technical jobs such as software development, IT support,
+          and digital services. Workers accept jobs, complete the work, and
+          submit deliverables through the platform.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>How Payments Work</h2>
+        <p>
+          Payments are authorized when a worker accepts a job and are held
+          securely until work is submitted and approved by the client.
+        </p>
+        <p>
+          If a dispute is opened, payments are paused until the issue is
+          resolved.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Platform Access</h2>
+        <p>
+          NativeBridge is primarily offered as a mobile application. This page
+          serves as the public business landing page for payment processing and
+          compliance purposes.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Contact</h2>
+        <p>
+          Support Email:
+          <a href="mailto:support@nativebridgeproject.com">
+            support@nativebridgeproject.com
+          </a>
+        </p>
+      </div>
+
+      <footer>
+        © <span id="year"></span> NativeBridge. All rights reserved.
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

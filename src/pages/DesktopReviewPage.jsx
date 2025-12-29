@@ -24,7 +24,7 @@ export default function ReviewPortal() {
     const fetchJob = async () => {
       try {
         const res = await fetch(
-          `${API_BASE}/api/review/${jobId}` // ✅ FIXED ROUTE
+          `${API_BASE}/api/review/${jobId}` 
         );
 
         if (!res.ok) {
