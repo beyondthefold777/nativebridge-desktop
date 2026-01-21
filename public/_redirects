@@ -2,9 +2,9 @@
 /stripe/refresh        /stripe/refresh.html        200
 /stripe/*              /stripe/index.html          200
 
-/terms                 /legal/terms.html           200
-/privacy               /legal/privacy.html         200
-/delete-account        /legal/delete-account.html  200
-/support               /legal/support.html         200
+/legal/terms                 /legal/terms.html           200
+/legal/privacy               /legal/privacy.html         200
+/legal/delete-account        /legal/delete-account.html  200
+/legal/support               /legal/support.html         200
 
 /*                     /index.html                 200
