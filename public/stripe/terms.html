@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | NativeBridge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00BFFF, #0077FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-size: 18px;
+      margin-top: 22px;
+      color: #cfe6ff;
+    }
+    p, li {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .muted {
+      color: #888;
+      font-size: 13px;
+    }
+    a {
+      color: #00BFFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 18px;
+      color: #777;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Terms & Conditions</h1>
+    <p class="muted">Last updated: <span id="date"></span></p>
+
+    <div class="card">
+      <p>
+        Welcome to <strong>NativeBridge</strong>. By accessing or using the app, you agree to these Terms & Conditions.
+        If you do not agree, please do not use the app.
+      </p>
+
+      <h2>1) Services</h2>
+      <p>
+        NativeBridge provides a platform that connects hirers and workers for digital services and deliverables.
+        We do not guarantee job availability, income, or outcomes.
+      </p>
+
+      <h2>2) Accounts</h2>
+      <ul>
+        <li>You are responsible for maintaining the security of your account.</li>
+        <li>You must provide accurate information.</li>
+        <li>Misuse, fraud, or abuse may lead to account suspension.</li>
+      </ul>
+
+      <h2>3) Payments</h2>
+      <p>
+        Payments may be processed through third-party providers (ex: Stripe). Workers are responsible for completing
+        onboarding requirements to receive payouts.
+      </p>
+
+      <h2>4) Disputes</h2>
+      <p>
+        Disputes may be opened by users under certain conditions. NativeBridge may review disputes and temporarily
+        restrict payouts while a dispute is being reviewed.
+      </p>
+
+      <h2>5) Prohibited Use</h2>
+      <ul>
+        <li>No illegal services or content.</li>
+        <li>No harassment or abuse.</li>
+        <li>No attempts to exploit, hack, or disrupt the platform.</li>
+      </ul>
+
+      <h2>6) Limitation of Liability</h2>
+      <p>
+        NativeBridge is provided “as-is”. We are not liable for losses, damages, delays, or disputes between users.
+      </p>
+
+      <h2>7) Contact</h2>
+      <p>
+        If you have questions, contact us at:
+        <a href="mailto:support@hvac2go.com">support@hvac2go.com</a>
+      </p>
+
+      <div class="footer">
+        © <span id="year"></span> NativeBridge. All rights reserved.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById("date").textContent = now.toISOString().slice(0, 10);
+    document.getElementById("year").textContent = now.getFullYear();
+  </script>
+</body>
+</html>

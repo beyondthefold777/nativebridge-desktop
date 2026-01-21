@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account | NativeBridge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00BFFF, #0077FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p, li {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .muted {
+      color: #888;
+      font-size: 13px;
+    }
+    .box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,191,255,0.35);
+      background: rgba(0,191,255,0.08);
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #cfe6ff;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      background: #111;
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .btn {
+      margin-top: 14px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(90deg, #00BFFF, #0077FF);
+      font-size: 15px;
+    }
+    .btn:hover {
+      opacity: 0.95;
+    }
+    a {
+      color: #00BFFF;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 18px;
+      color: #777;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Delete Your Account</h1>
+    <p class="muted">Last updated: <span id="date"></span></p>
+
+    <div class="card">
+      <p>
+        You can request deletion of your NativeBridge account and associated data.
+      </p>
+
+      <div class="box">
+        <p><strong>What gets deleted:</strong></p>
+        <ul>
+          <li>Your account profile information</li>
+          <li>Your job history and submissions (where legally allowed)</li>
+          <li>Your messages and platform activity data</li>
+        </ul>
+
+        <p><strong>What may be retained:</strong></p>
+        <ul>
+          <li>Payment or transaction records required for legal/tax/compliance</li>
+          <li>Records needed to resolve disputes or fraud investigations</li>
+        </ul>
+      </div>
+
+      <p style="margin-top: 14px;">
+        To request deletion, email us directly at:
+        <a href="mailto:support@hvac2go.com?subject=NativeBridge%20Account%20Deletion%20Request">
+          support@hvac2go.com
+        </a>
+      </p>
+
+      <p class="muted">
+        Optional: You can fill this out for your own convenience, then press the button to open your email app.
+        (This does not submit anything automatically.)
+      </p>
+
+      <label>Email associated with your account</label>
+      <input id="email" placeholder="you@example.com" />
+
+      <label>Request details (optional)</label>
+      <textarea id="details" placeholder="Example: Please delete my account and all stored data."></textarea>
+
+      <button class="btn" onclick="openEmail()">Request Deletion via Email</button>
+
+      <div class="footer">
+        © <span id="year"></span> NativeBridge. All rights reserved.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById("date").textContent = now.toISOString().slice(0, 10);
+    document.getElementById("year").textContent = now.getFullYear();
+
+    function openEmail() {
+      const email = document.getElementById("email").value || "";
+      const details = document.getElementById("details").value || "";
+
+      const subject = encodeURIComponent("NativeBridge Account Deletion Request");
+      const body = encodeURIComponent(
+        `Hello NativeBridge Support,\n\nI would like to request deletion of my NativeBridge account.\n\nAccount Email: ${email}\n\nDetails:\n${details}\n\nThank you.`
+      );
+
+      window.location.href = `mailto:support@hvac2go.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
